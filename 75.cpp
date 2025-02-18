@@ -1,22 +1,26 @@
 class Solution {
  public:
-  void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-    int i = m - 1;      
-    int j = n - 1;      
-    int k = m + n - 1;  
+  void sortColors(vector<int>& nums) {
+    int zero = -1;
+    int one = -1;
+    int two = -1;
 
-    while (j >= 0)
-      if (i >= 0 && nums1[i] > nums2[j])
-        nums1[k--] = nums1[i--];
-      else
-        nums1[k--] = nums2[j--];
+    for (const int num : nums)
+      if (num == 0) {
+        nums[++two] = 2;
+        nums[++one] = 1;
+        nums[++zero] = 0;
+      } else if (num == 1) {
+        nums[++two] = 2;
+        nums[++one] = 1;
+      } else {
+        nums[++two] = 2;
+      }
   }
 };
 
-
 Input
 nums =
-[2,0,1]
-
+[2,0,2,1,1,0]
 Output
-[0,1,2]
+[0,0,1,1,2,2]
